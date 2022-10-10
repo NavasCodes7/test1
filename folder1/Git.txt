@@ -1,0 +1,64 @@
+**********************************************************************************************
+							GETTING STARTED
+**********************************************************************************************
+
+#Download and install GIT - Version Control
+#create a username and mail configuration using cmd
+
+
+> git init								#initialising repositories to be controlled by git
+
+> git status 							#for knowing status of git repositories
+
+> git add <filename>					#to add a file to git stage
+> git add -A							#add all untracked file to git and modify all changes
+
+> git branch -M main					#change current branch to "main"
+
+> git commit -m "first commit"			#to commit a change
+
+> git log								#show log of all commits.
+
+> git checkout <first 7 of commit>		#revert back to a certain commit
+
+-----------------------------------------------------------
+Connect local git with github server using SSH keys
+-----------------------------------------------------------
+#google 'github ssh key' and follow procedure
+			1. open git bash
+
+			2. #check for existing keys( "id_rsa.pub/id_ecdsa.pub/id_ed25519.pub" files)
+					> ls -al ~/.ssh   		
+
+			3. #generate new key
+					> ssh-keygen -t ed25519 -C "[mail]"		
+
+			4. start the ssh-agent in the background
+					> eval "$(ssh-agent -s)"
+
+			5. Add your SSH private key to the ssh-agent
+					> ssh-add ~/.ssh/id_ed25519
+
+			# you now have pr and pb keys locally.
+
+			6. Copy the SSH public key to your clipboard
+					> clip < ~/.ssh/id_ed25519.pub
+
+			7. Add copied key to your github account to save the pc
+
+			# test your connection
+					> ssh -T git@github.com
+
+
+-----------------------------------------------------------
+Using Remote server
+-----------------------------------------------------------
+# Mention remote repository locally 
+			> git remote add <any name for remote rep> <rep ssh link>
+
+
+> git remote -v  											#view remotely connected repositories. for eg github or bitbucket.
+
+> git pull <remote rep name> <branch - master>				#download changes in code
+
+> git push <remote rep name> <branch - master>				#upload changes in code
